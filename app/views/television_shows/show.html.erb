@@ -1,3 +1,6 @@
+
+
+
 <h3><%= @television_show.title %></h3>
 
 <ul>
@@ -7,4 +10,17 @@
 
 <div>
   <%= @television_show.synopsis %>
-</div>
+</div><br>
+
+
+
+<h3>Characters</h3>
+<a href="/television_shows/<%= "#{params[:id]}/characters/new"%>">Add character</a>
+<ul>
+<% @television_show.characters.each do |character| %>
+  <li><%= character.character_name %></li>
+  <li><%= character.actor_name %></li>
+  <li><%= character.description %></li>
+  <%end%>
+</ul>
+
