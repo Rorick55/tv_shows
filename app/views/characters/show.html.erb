@@ -1,0 +1,10 @@
+
+
+<h3><%= @character.character_name %></h3>
+<%= @character.television_show.title %><br/>
+<%= @character.actor_name %><br/>
+<%= @character.description %><br/>
+
+<%= link_to "Delete", character_path(@character), method: :delete %>
+
+

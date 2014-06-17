@@ -28,7 +28,7 @@ feature 'user adds a new character', %Q{
       character = Character.new(attrs)
       show = TelevisionShow.create(show_attrs)
 
-      visit "/television_shows/1/characters/new"
+      visit "/television_shows/#{show.id}/characters/new"
       fill_in 'Character name', with: character.character_name
       fill_in 'Actor name', with: character.actor_name
       fill_in 'Description', with: character.description
@@ -45,9 +45,9 @@ feature 'user adds a new character', %Q{
         network: 'HBO'
       }
 
-      TelevisionShow.create(show_attrs)
+      show = TelevisionShow.create(show_attrs)
 
-      visit "/television_shows/2/characters/new"
+      visit "/television_shows/#{show.id}/characters/new"
       click_on 'Submit'
 
       expect(page).to have_content "can't be blank"
@@ -69,7 +69,7 @@ feature 'user adds a new character', %Q{
       first_character.television_show_id = show.id
       first_character.save
 
-      visit "/television_shows/3/characters/new"
+      visit "/television_shows/#{show.id}/characters/new"
       fill_in 'Character name', with: first_character.character_name
       fill_in 'Actor name', with: first_character.actor_name
       click_on 'Submit'
