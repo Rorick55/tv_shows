@@ -11,7 +11,11 @@ require 'rails_helper'
 
       visit "actors/#{actor.id}"
       expect(page).to have_content actor.name
-      expect(page).to have_content actor.characters.character_name
-      expect(page).to have_content actor.television_shows.title
+      actor.characters.each do |character|
+        expect(page).to have_content character.character_name
+      end
+      actor.television_shows.each do |television_show|
+        expect(page).to have_content television_show.title
+      end
     end
   end

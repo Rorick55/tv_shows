@@ -25,23 +25,20 @@ class CharactersController < ApplicationController
   end
 
   def create
-    @television_show = TelevisionShow.find(params[:television_show_id])
-    find = Character.where(character_name: character_params[:character_name], actor_name: character_params[:actor_name], television_show_id: params[:television_show_id])
-    if find.empty?
+      @television_show = TelevisionShow.find(params[:television_show_id])
+      @actor = Actor.where(name: character_params[:actor_name])
 
       @character = Character.new(character_params)
       @character.television_show_id = @television_show.id
+      if !@actor.empty?
+        @character.actor_id = @actor.first.id
+      end
         if @character.save
           flash[:notice] = "Success"
           redirect_to @television_show
         else
-          flash[:notice] = "can't be blank"
-          redirect_to @television_show
+          render :new
         end
-    else
-      flash[:notice] = 'has already been taken'
-      redirect_to @television_show
-    end
   end
 
   def character_params

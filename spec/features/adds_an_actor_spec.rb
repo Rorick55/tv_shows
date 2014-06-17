@@ -44,7 +44,7 @@ require 'rails_helper'
     fill_in "Description", with: actor.description
     click_on 'Submit'
 
-    expect(page).to have_content "actor already exists"
+    expect(page).to have_content "has already been taken"
     expect(page).to_not have_content actor.name
     expect(page).to_not have_content "Success"
   end

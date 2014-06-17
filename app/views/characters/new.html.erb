@@ -1,3 +1,11 @@
+<h2>Add Character:</h2>
+
+<%if @character.errors.any?%>
+  <%@character.errors.full_messages.each do |msg|%>
+   <%= msg%><br/>
+  <%end%>
+<%end%>
+
 <%= form_for [@television_show, @character] do |f| %>
   <div>
   <%= f.label :character_name %> :

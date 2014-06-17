@@ -1,0 +1,15 @@
+<h3>Add an actor:</h3>
+
+<%if @actor.errors.any?%>
+  <%@actor.errors.full_messages.each do |msg|%>
+   <%= msg%><br/>
+  <%end%>
+<%end%>
+
+<%= form_for @actor do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.submit 'Submit' %>
+<%end%>

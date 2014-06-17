@@ -17,7 +17,7 @@ require 'rails_helper'
       actors << Actor.create(attri)
     end
 
-    visit '/actors'
+    visit actors_path
     actors.each do |actor|
       expect(page).to have_content actor.name
     end

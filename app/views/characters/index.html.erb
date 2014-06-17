@@ -3,7 +3,7 @@
 <ul>
   <% @characters.each do |character| %>
     <li>
-      <%= "#{character.character_name} - #{character.television_show.title}" %>
+      <%= link_to character.character_name, character_path(character) %> - <%= link_to character.television_show.title, television_show_path(character.television_show) %>
     </li>
   <% end %>
 </ul>

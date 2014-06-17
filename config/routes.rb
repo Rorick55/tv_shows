@@ -6,4 +6,6 @@ TvShows::Application.routes.draw do
   end
 
   resources :characters
+
+  resources :actors
 end

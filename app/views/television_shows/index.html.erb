@@ -3,7 +3,7 @@
 <ul>
   <% @television_shows.each do |show| %>
     <li>
-      <%= "#{show.title} (#{show.network})" %>
+      <%= link_to show.title, television_show_path(show) %> (<%=show.network %>)
     </li>
   <% end %>
 </ul>
